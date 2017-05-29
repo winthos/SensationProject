@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d2722c479f470d6408174cd962910e81
+timeCreated: 1476606561
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - TESTY
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c6a04a2dc3de068468bc259eff105dab, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
