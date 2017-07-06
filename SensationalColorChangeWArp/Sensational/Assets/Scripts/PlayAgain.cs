@@ -17,8 +17,9 @@ public class PlayAgain : MonoBehaviour
 	{
 	    if(ResetOrb.GetComponent<OrbLogicAttempt>().SomethingTouchedMe == true)
         {
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            //Scene scene = SceneManager.GetActiveScene();
+            //SceneManager.LoadScene(scene.name);
+            SceneManager.LoadScene("TitleScene");
         }
 	}
 }

@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\FinishLineLogic.cs" />
      <Compile Include="Assets\Scripts\AlwaysLookAt.cs" />
      <Compile Include="Assets\Scripts\AnotherBackAndForth.cs" />
      <Compile Include="Assets\Scripts\AppearWithDistance.cs" />
@@ -82,6 +83,7 @@
      <Compile Include="Assets\Scripts\Room5Data.cs" />
      <Compile Include="Assets\Scripts\Room6Data.cs" />
      <Compile Include="Assets\Scripts\Room7Data.cs" />
+     <Compile Include="Assets\Scripts\SaveTest.cs" />
      <Compile Include="Assets\Scripts\ShootLogic.cs" />
      <Compile Include="Assets\Scripts\StandActivator.cs" />
      <Compile Include="Assets\Scripts\StandMoveForward.cs" />

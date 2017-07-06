@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO;
 
 [System.Serializable]
 
 public class DataNStuff : MonoBehaviour 
 {
+
+    
     // Time taken data
     //combines both time spent in stopped time and normal time
 
@@ -552,6 +555,57 @@ public class DataNStuff : MonoBehaviour
     public void UpdateNumberOfSwitchResetsInRoom7()
     {
         OrbResetsInRoom7 += 1;
+    }
+
+    public void SaveTheThing()
+    {
+
+        //check if the directory exists, if it doesnt make the save diretory. If it does gooooodo
+        if (System.IO.File.Exists(Application.dataPath + "/save") == false)
+        {
+            Directory.CreateDirectory(Application.dataPath + "/save");
+        }
+
+        int filecount = 0;
+
+        //Directory ThisDirectory = ;
+
+        filecount = Directory.GetFiles(Application.dataPath + "/save").Length;
+
+        //ok we know how many files there be, now we needt o save a new file that is the bigger
+
+        var myFile = File.Create(Application.dataPath + "/save/DataSet" + (filecount + 1) + ".csv");
+        myFile.Close();
+
+       // myFile = File.WriteAllText(Application.dataPath + "/save/DataSet" + (filecount + 1) + ".csv", "test");
+        File.WriteAllText(Application.dataPath + "/save/DataSet" + (filecount + 1) + ".csv", 
+            
+           TotalTime.ToString() + "," + TimeInRoom1.ToString() + "," + TimeInRoom2.ToString() + "," + 
+           TimeInRoom3.ToString() + "," + TimeInRoom4.ToString() + "," + TimeInRoom5.ToString() + "," +
+           TimeInRoom6.ToString() + "," + TimeInRoom7.ToString() + "," + TotalStoppedTime.ToString() + "," +
+           StoppedTimeInRoom1.ToString() + "," + StoppedTimeInRoom2.ToString() + "," + StoppedTimeInRoom3.ToString() + "," +
+           StoppedTimeInRoom4.ToString() + "," + StoppedTimeInRoom5.ToString() + "," + StoppedTimeInRoom6.ToString() + "," +
+           StoppedTimeInRoom7.ToString() + "," + TotalNormalTime.ToString() + "," + NormalTimeInRoom1.ToString() + "," +
+           NormalTimeInRoom2.ToString() + "," + NormalTimeInRoom3.ToString() + "," + NormalTimeInRoom4.ToString() + "," +
+           NormalTimeInRoom5.ToString() + "," + NormalTimeInRoom6.ToString() + "," + NormalTimeInRoom7.ToString() + "," +
+           TotalShotsFired.ToString() + "," + ShotsFiredInRoom1.ToString() + "," + ShotsFiredInRoom2.ToString() + "," +
+           ShotsFiredInRoom3.ToString() + "," + ShotsFiredInRoom4.ToString() + "," + ShotsFiredInRoom5.ToString() + "," +
+           ShotsFiredInRoom6.ToString() + "," + ShotsFiredInRoom7.ToString() + "," + TotalTimesTimeStopped.ToString() + "," +
+           TimesTimeStoppedInRoom1.ToString() + "," + TimesTimeStoppedInRoom2.ToString() + "," + TimesTimeStoppedInRoom3.ToString() + "," +
+           TimesTimeStoppedInRoom4.ToString() + "," + TimesTimeStoppedInRoom5.ToString() + "," + TimesTimeStoppedInRoom6.ToString() + "," +
+           TimesTimeStoppedInRoom7.ToString() + "," + TotalTimesHitByAnyHazard.ToString() + "," + TotalTimesHitByProjectiles.ToString() + "," +
+           TimesHitByProjectilesInRoom3.ToString() + "," + TimesHitByProjectilesInRoom4.ToString() + "," + TimesHitByProjectilesInRoom5.ToString() + "," +
+           TimesHitByProjectilesInRoom6.ToString() + "," + TimesHitByProjectilesInRoom7.ToString() + "," + TotalTimesHitByBlocks.ToString() + "," +
+           TimesHitByBlocksInRoom5.ToString() + "," + TimesHitByBlocksInRoom7.ToString() + "," + TotalOrbResets.ToString() + "," +
+           OrbResetsInRoom2.ToString() + "," + OrbResetsInRoom3.ToString() + "," + OrbResetsInRoom4.ToString() + "," + OrbResetsInRoom5.ToString() + "," +
+           OrbResetsInRoom6.ToString() + "," + OrbResetsInRoom7.ToString()
+           );
+
+    }
+
+    private void WriteTheData()
+    {
+
     }
 
 
