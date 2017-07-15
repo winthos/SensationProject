@@ -223,6 +223,11 @@ public class DataNStuff : MonoBehaviour
         UpdateTotalHazardData();
         UpdateTotalNormalTime();
         UpdateTotalStoppedTime();
+
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            TotallyLegitData();
+        }
 	}
 
     public void UpdateTotalOrbResets()
@@ -603,9 +608,123 @@ public class DataNStuff : MonoBehaviour
 
     }
 
-    private void WriteTheData()
+    public void TotallyLegitData()
     {
 
+        StoppedTimeInRoom1 = Random.Range(0.0f, 5.6f);
+        StoppedTimeInRoom2 = Random.Range(4.0f, 12.0f);
+        StoppedTimeInRoom3 = Random.Range(9.0f, 20.0f);
+        StoppedTimeInRoom4 = Random.Range(18.0f, 29.0f);
+        StoppedTimeInRoom5 = Random.Range(22.0f, 38.0f);
+        StoppedTimeInRoom6 = Random.Range(30.0f, 43.0f);
+        StoppedTimeInRoom7 = Random.Range(29.0f, 50.0f);
+        TotalStoppedTime = StoppedTimeInRoom1 + StoppedTimeInRoom2 + StoppedTimeInRoom3 + StoppedTimeInRoom4 + StoppedTimeInRoom5 + StoppedTimeInRoom6 + StoppedTimeInRoom7;
+
+        NormalTimeInRoom1 = Random.Range(5.0f, 8.0f);
+        NormalTimeInRoom2 = Random.Range(7.0f, 12.0f);
+        NormalTimeInRoom3 = Random.Range(3.0f, 45.0f);
+        NormalTimeInRoom4 = Random.Range(7.0f, 12.0f);
+        NormalTimeInRoom5 = Random.Range(14.0f, 20.0f);
+        NormalTimeInRoom6 = Random.Range(70.0f, 90.0f);
+        NormalTimeInRoom7 = Random.Range(28.0f, 40.0f);
+        TotalNormalTime = NormalTimeInRoom1 + NormalTimeInRoom2 + NormalTimeInRoom3 + NormalTimeInRoom4 + NormalTimeInRoom5 + NormalTimeInRoom6 + NormalTimeInRoom7;
+
+        TimeInRoom1 = StoppedTimeInRoom1 + NormalTimeInRoom1;
+        TimeInRoom2 = StoppedTimeInRoom2 + NormalTimeInRoom2;
+        TimeInRoom3 = StoppedTimeInRoom3 + NormalTimeInRoom3;
+        TimeInRoom4 = StoppedTimeInRoom4 + NormalTimeInRoom4;
+        TimeInRoom5 = StoppedTimeInRoom5 + NormalTimeInRoom5;
+        TimeInRoom6 = StoppedTimeInRoom6 + NormalTimeInRoom6;
+        TimeInRoom7 = StoppedTimeInRoom7 + NormalTimeInRoom7;
+        TotalTime = TotalStoppedTime + TotalNormalTime;
+
+        ShotsFiredInRoom1 = Random.Range(1, 4);
+        ShotsFiredInRoom2 = Random.Range(4, 10);
+        ShotsFiredInRoom3 = Random.Range(8, 16);
+        ShotsFiredInRoom4 = Random.Range(3, 6);
+        ShotsFiredInRoom5 = Random.Range(6, 9);
+        ShotsFiredInRoom6 = Random.Range(19, 30);
+        ShotsFiredInRoom7 = Random.Range(10, 18);
+        TotalShotsFired = ShotsFiredInRoom1 + ShotsFiredInRoom2 + ShotsFiredInRoom3 + ShotsFiredInRoom4 + ShotsFiredInRoom5 + ShotsFiredInRoom6 + ShotsFiredInRoom7;
+
+        TimesTimeStoppedInRoom1 = Random.Range(0, 3);
+        TimesTimeStoppedInRoom2 = Random.Range(1, 4);
+        TimesTimeStoppedInRoom3 = Random.Range(4, 9);
+        TimesTimeStoppedInRoom4 = Random.Range(4, 10);
+        TimesTimeStoppedInRoom5 = Random.Range(5, 9);
+        TimesTimeStoppedInRoom6 = Random.Range(19, 30);
+        TimesTimeStoppedInRoom7 = Random.Range(9, 17);
+        TotalTimesTimeStopped =
+         TimesTimeStoppedInRoom1 +
+          TimesTimeStoppedInRoom2 +
+           TimesTimeStoppedInRoom3 +
+            TimesTimeStoppedInRoom4 +
+             TimesTimeStoppedInRoom5 +
+              TimesTimeStoppedInRoom6 +
+               TimesTimeStoppedInRoom7;
+
+        TimesHitByProjectilesInRoom3 = Random.Range(2, 4);
+        TimesHitByProjectilesInRoom4 = Random.Range(0, 4);
+        TimesHitByProjectilesInRoom5 = Random.Range(0, 5);
+        TimesHitByProjectilesInRoom6 = Random.Range(0, 6);
+        TimesHitByProjectilesInRoom7 = Random.Range(0, 8);
+        TotalTimesHitByProjectiles = TimesHitByProjectilesInRoom3 + TimesHitByProjectilesInRoom4 + TimesHitByProjectilesInRoom5 + TimesHitByProjectilesInRoom6 + TimesHitByProjectilesInRoom7;
+
+        TimesHitByBlocksInRoom5 = Random.Range(0, 5);
+        TimesHitByBlocksInRoom7 = Random.Range(0, 6);
+        TotalTimesHitByBlocks = TimesHitByBlocksInRoom5 + TimesHitByBlocksInRoom7;
+
+        TotalTimesHitByAnyHazard = TotalTimesHitByProjectiles + TotalTimesHitByBlocks;
+
+        OrbResetsInRoom2 = Random.Range(0, 2);
+        OrbResetsInRoom3 = Random.Range(0, 3);
+        OrbResetsInRoom4 = Random.Range(0, 4);
+        OrbResetsInRoom5 = Random.Range(0, 5);
+        OrbResetsInRoom6 = Random.Range(0, 5);
+        OrbResetsInRoom7 = Random.Range(0, 6);
+        TotalOrbResets = OrbResetsInRoom2 + OrbResetsInRoom3 + OrbResetsInRoom4 + OrbResetsInRoom5 + OrbResetsInRoom6 + OrbResetsInRoom7;
+
+
+        //check if the directory exists, if it doesnt make the save diretory. If it does gooooodo
+        if (System.IO.File.Exists(Application.dataPath + "/save") == false)
+        {
+            Directory.CreateDirectory(Application.dataPath + "/save");
+        }
+
+        int filecount = 0;
+
+        //Directory ThisDirectory = ;
+
+        filecount = Directory.GetFiles(Application.dataPath + "/save").Length;
+
+        //ok we know how many files there be, now we needt o save a new file that is the bigger
+
+        var myFile = File.Create(Application.dataPath + "/save/DataSet" + (filecount + 1) + ".csv");
+        myFile.Close();
+
+        // myFile = File.WriteAllText(Application.dataPath + "/save/DataSet" + (filecount + 1) + ".csv", "test");
+        File.WriteAllText(Application.dataPath + "/save/DataSet" + (filecount + 1) + ".csv",
+
+           TotalTime.ToString() + "," + TimeInRoom1.ToString() + "," + TimeInRoom2.ToString() + "," +
+           TimeInRoom3.ToString() + "," + TimeInRoom4.ToString() + "," + TimeInRoom5.ToString() + "," +
+           TimeInRoom6.ToString() + "," + TimeInRoom7.ToString() + "," + TotalStoppedTime.ToString() + "," +
+           StoppedTimeInRoom1.ToString() + "," + StoppedTimeInRoom2.ToString() + "," + StoppedTimeInRoom3.ToString() + "," +
+           StoppedTimeInRoom4.ToString() + "," + StoppedTimeInRoom5.ToString() + "," + StoppedTimeInRoom6.ToString() + "," +
+           StoppedTimeInRoom7.ToString() + "," + TotalNormalTime.ToString() + "," + NormalTimeInRoom1.ToString() + "," +
+           NormalTimeInRoom2.ToString() + "," + NormalTimeInRoom3.ToString() + "," + NormalTimeInRoom4.ToString() + "," +
+           NormalTimeInRoom5.ToString() + "," + NormalTimeInRoom6.ToString() + "," + NormalTimeInRoom7.ToString() + "," +
+           TotalShotsFired.ToString() + "," + ShotsFiredInRoom1.ToString() + "," + ShotsFiredInRoom2.ToString() + "," +
+           ShotsFiredInRoom3.ToString() + "," + ShotsFiredInRoom4.ToString() + "," + ShotsFiredInRoom5.ToString() + "," +
+           ShotsFiredInRoom6.ToString() + "," + ShotsFiredInRoom7.ToString() + "," + TotalTimesTimeStopped.ToString() + "," +
+           TimesTimeStoppedInRoom1.ToString() + "," + TimesTimeStoppedInRoom2.ToString() + "," + TimesTimeStoppedInRoom3.ToString() + "," +
+           TimesTimeStoppedInRoom4.ToString() + "," + TimesTimeStoppedInRoom5.ToString() + "," + TimesTimeStoppedInRoom6.ToString() + "," +
+           TimesTimeStoppedInRoom7.ToString() + "," + TotalTimesHitByAnyHazard.ToString() + "," + TotalTimesHitByProjectiles.ToString() + "," +
+           TimesHitByProjectilesInRoom3.ToString() + "," + TimesHitByProjectilesInRoom4.ToString() + "," + TimesHitByProjectilesInRoom5.ToString() + "," +
+           TimesHitByProjectilesInRoom6.ToString() + "," + TimesHitByProjectilesInRoom7.ToString() + "," + TotalTimesHitByBlocks.ToString() + "," +
+           TimesHitByBlocksInRoom5.ToString() + "," + TimesHitByBlocksInRoom7.ToString() + "," + TotalOrbResets.ToString() + "," +
+           OrbResetsInRoom2.ToString() + "," + OrbResetsInRoom3.ToString() + "," + OrbResetsInRoom4.ToString() + "," + OrbResetsInRoom5.ToString() + "," +
+           OrbResetsInRoom6.ToString() + "," + OrbResetsInRoom7.ToString()
+           );
     }
 
 
